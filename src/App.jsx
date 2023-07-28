@@ -20,8 +20,11 @@ function App() {
             path="/company/:companySlug"
             element={<CompanyPage companies={companies} />}
           ></Route>
+          <Route
+            path="/tech/:techSlug"
+            element={<TechnologyPage technologies={technologies} />}
+          ></Route>
         </Route>
-        <Route path="/tech/:slug" element={<TechnologyPage />}></Route>
       </Routes>
     </div>
   );
