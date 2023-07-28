@@ -11,13 +11,16 @@ import TechnologyPage from "./pages/TechnologyPage";
 function App() {
   const [companies, setCompanies] = useState(companiesJson);
   const [technologies, setTechnologies] = useState(technologiesJson);
-  console.log(companiesJson, "COMPANIES", technologiesJson, "TECHNOOOS");
   return (
     <div className="App">
       <Navbar />
       <Routes>
-        <Route path="/" element={<HomePage />}></Route>
-        <Route path="/company/:companySlug" element={<CompanyPage />}></Route>
+        <Route path="/" element={<HomePage companies={companies} />}>
+          <Route
+            path="/company/:companySlug"
+            element={<CompanyPage companies={companies} />}
+          ></Route>
+        </Route>
         <Route path="/tech/:slug" element={<TechnologyPage />}></Route>
       </Routes>
     </div>
