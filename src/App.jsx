@@ -1,9 +1,25 @@
 import "./App.css";
+import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import companiesJson from "./companies.json";
+import technologiesJson from "./technologies.json";
+import HomePage from "./pages/HomePage";
+import Navbar from "./components/Navbar";
+import CompanyPage from "./pages/CompanyPage";
+import TechnologyPage from "./pages/TechnologyPage";
 
 function App() {
+  const [companies, setCompanies] = useState(companiesJson);
+  const [technologies, setTechnologies] = useState(technologiesJson);
+  console.log(companiesJson, "COMPANIES", technologiesJson, "TECHNOOOS");
   return (
     <div className="App">
-      <h1>LAB | React Stack Tracker</h1>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />}></Route>
+        <Route path="/company/:companySlug" element={<CompanyPage />}></Route>
+        <Route path="/tech/:slug" element={<TechnologyPage />}></Route>
+      </Routes>
     </div>
   );
 }
